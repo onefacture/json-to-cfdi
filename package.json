@@ -1,6 +1,6 @@
 {
   "name": "json-to-cfdi",
-  "version": "1.0.4",
+  "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
