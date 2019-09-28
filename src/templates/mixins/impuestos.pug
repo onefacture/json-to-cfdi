@@ -1,0 +1,42 @@
+//- Esta función esta diseñada para satisfacer las necesidades de los impuestos generales
+    y los impuestos por conceptos. Abajo vienen especificados los campos requeridos y opcionales
+    para los dos casos.
+mixin addTaxes(impuestos)
+    if impuestos
+        cfdi:Impuestos(
+            TotalImpuestosRetenidos=impuestos.totalImpuestosRetenidos
+            TotalImpuestosTrasladados=impuestos.totalImpuestosTrasladados
+        )
+            if impuestos.retenciones && impuestos.retenciones instanceof Array
+                cfdi:Retenciones
+                    each retencion in impuestos.retenciones
+                        //-
+                            Impuestos generales:
+                                Requeridos: impuesto e importe
+                            Impuestos por conceptos:
+                                Requeridos: base, impuesto, tipoFactor, tasaOCuota e importe
+                        cfdi:Retencion(
+                            Impuesto=retencion.impuesto
+                            Importe=retencion.importe
+
+                            TipoFactor=retencion.tipoFactor
+                            TasaOCuota=retencion.tasaOCuota
+                            Base=retencion.base
+                        )
+
+            if impuestos.traslados && impuestos.traslados instanceof Array
+                cfdi:Traslados
+                    each traslado in impuestos.traslados
+                        //-
+                            Impuestos generales:
+                                Requeridos: impuesto, tipoFactor, tasaOCuota e importe
+                            Impuestos por conceptos:
+                                Requeridos: base, impuesto y tipoFactor
+                                Opcionales: tasaOCuota e importe
+                        cfdi:Traslado(
+                            Impuesto=traslado.impuesto
+                            TipoFactor=traslado.tipoFactor
+                            TasaOCuota=traslado.tasaOCuota
+                            Importe=traslado.importe
+                            Base=traslado.base
+                        )

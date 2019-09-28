@@ -1,0 +1,16 @@
+if nomina.deducciones && nomina.deducciones.arrayDeducciones
+    //- Nodo opcional para expresar las deducciones aplicables.
+        Los atributos son opcionales
+    nomina12:Deducciones(
+        TotalOtrasDeducciones=nomina.deducciones.totalOtrasDeducciones
+        TotalImpuestosRetenidos=nomina.deducciones.totalImpuestosRetenidos
+    )
+        each deduccion in nomina.deducciones.arrayDeducciones
+            //- Nodo requerido para expresar la información detallada de una deducción.
+                Los atributos son requeridos
+            nomina12:Deduccion(
+                TipoDeduccion=deduccion.tipoDeduccion
+                Clave=deduccion.clave
+                Concepto=deduccion.concepto
+                Importe=deduccion.importe
+            )

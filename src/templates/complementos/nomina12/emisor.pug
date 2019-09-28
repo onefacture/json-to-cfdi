@@ -1,0 +1,22 @@
+if nomina.emisor
+    //- Los atributos son opcionales
+    nomina12:Emisor(
+        Curp=nomina.emisor.curp
+        RegistroPatronal=nomina.emisor.registroPatronal
+        RfcPatronOrigen=nomina.emisor.rfcPatronOrigen
+    )
+        if nomina.emisor.origenRecurso
+            //-
+                Requerido: origenRecurso
+                Opcional: montoRecursoPropio
+            nomina12:EntidadSNCF(
+                OrigenRecurso=nomina.emisor.origenRecurso
+                MontoRecursoPropio=nomina.emisor.montoRecursoPropio
+            )
+
+        if nomina.emisor.entidades
+            each entidad in nomina.emisor.entidades
+                nomina12:EntidadSNCF(
+                    OrigenRecurso=entidad.origenRecurso
+                    MontoRecursoPropio=entidad.montoRecursoPropio
+                )

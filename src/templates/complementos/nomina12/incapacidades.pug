@@ -1,0 +1,13 @@
+if nomina.incapacidades
+    //- Nodo condicional para expresar información de las incapacidades.
+    nomina12:Incapacidades
+        each incapacidad in nomina.incapacidades
+            //- Nodo requerido para expresar información de las incapacidades.
+                - Requeridos: diasIncapacidad y tipoIncapacidad
+                - Opcionales: importeMonetario
+            nomina12:Incapacidad(
+                DiasIncapacidad=incapacidad.diasIncapacidad
+                TipoIncapacidad=incapacidad.tipoIncapacidad
+
+                ImporteMonetario=incapacidad.importeMonetario
+            )

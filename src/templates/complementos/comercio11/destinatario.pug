@@ -1,0 +1,22 @@
+if comercioExterior.destinatario
+    //- Los atributos son opcionales
+    cce11:Destinatario(
+        Nombre=comercioExterior.destinatario.nombre
+        NumRegIdTrib=comercioExterior.destinatario.numRegIdTrib
+    )
+        if comercioExterior.destinatario.domicilio
+            //-
+                Requeridos: Calle, Estado, Pais, CodigoPostal
+                Opcionales: NumeroExterior, NumeroInterior, Colonia, Localidad, Referencia, Municipio
+            cce11:Domicilio(
+                Calle=comercioExterior.destinatario.domicilio.calle
+                NumeroExterior=comercioExterior.destinatario.domicilio.numeroExterior
+                NumeroInterior=comercioExterior.destinatario.domicilio.numeroInterior
+                Colonia=comercioExterior.destinatario.domicilio.colonia
+                Localidad=comercioExterior.destinatario.domicilio.localidad
+                Referencia=comercioExterior.destinatario.domicilio.referencia
+                Municipio=comercioExterior.destinatario.domicilio.municipio
+                Estado=comercioExterior.destinatario.domicilio.estado
+                Pais=comercioExterior.destinatario.domicilio.pais
+                CodigoPostal=comercioExterior.destinatario.domicilio.codigoPostal
+            )

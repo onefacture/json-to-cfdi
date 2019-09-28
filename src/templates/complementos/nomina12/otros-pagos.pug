@@ -1,0 +1,29 @@
+if nomina.otrosPagos
+    //- Nodo opcional para expresar las deducciones aplicables.
+    nomina12:OtrosPagos
+        each otroPago in nomina.otrosPagos
+            //- Nodo requerido para expresar la información detallada del otro pago.
+
+                - Los atributos son requeridos
+            nomina12:OtroPago(
+                TipoOtroPago=otroPago.tipoOtroPago
+                Clave=otroPago.clave
+                Concepto=otroPago.concepto
+                Importe=otroPago.importe
+            )
+                if otroPago.subsidioAlEmpleo
+                    //- Nodo requerido para expresar la información referente al subsidio al empleo del trabajador.
+
+                        - El atributo "SubsidioCausado" es requerido
+                    nomina12:SubsidioAlEmpleo(
+                        SubsidioCausado=otroPago.subsidioAlEmpleo.subsidioCausado
+                    )
+                if otroPago.compensacionSaldosAFavor
+                    //- Nodo condicional para expresar la información referente a la compensación de saldos a favor de un trabajador.
+
+                        - Los atributos son requeridos
+                    nomina12:CompensacionSaldosAFavor(
+                        SaldoAFavor=otroPago.compensacionSaldosAFavor.saldoAFavor
+                        Año=otroPago.compensacionSaldosAFavor.año
+                        RemanenteSalFav=otroPago.compensacionSaldosAFavor.remanenteSalFav
+                    )

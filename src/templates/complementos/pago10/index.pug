@@ -1,0 +1,17 @@
+if complementos && complementos.pagos && complementos.pagos.arrayPagos
+    - arrayPagos = complementos.pagos.arrayPagos;
+
+if pagos && pagos.arrayPagos
+    - arrayPagos = pagos.arrayPagos;
+
+if arrayPagos
+
+    //-
+        Requeridos: tipoNomina, fechaPago, fechaInicialPago, fechaFinalPago y numDiasPagados
+        Opcionales: totalPercepciones, totalDeducciones y totalOtrosPagos
+    pago10:Pagos(
+        Version="1.0"
+    )
+        each pago in arrayPagos
+            //- Including pagos
+            include pagos

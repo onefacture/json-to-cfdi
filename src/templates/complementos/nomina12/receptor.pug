@@ -1,0 +1,31 @@
+//-
+    Requeridos: curp, tipoContrato, tipoRegimen, numEmpleado, periodicidadPago y claveEntFed
+    Opcionales: numSeguridadSocial, fechaInicioRelLaboral, antigüedad, sindicalizado, tipoJornada, departamento, puesto, riesgoPuesto, banco, cuentaBancaria, salarioBaseCotApor y salarioDiarioIntegrado
+nomina12:Receptor(
+    Curp=nomina.receptor.curp
+    TipoContrato=nomina.receptor.tipoContrato
+    TipoRegimen=nomina.receptor.tipoRegimen
+    NumEmpleado=nomina.receptor.numEmpleado
+    PeriodicidadPago=nomina.receptor.periodicidadPago
+    ClaveEntFed=nomina.receptor.claveEntFed
+
+    NumSeguridadSocial=nomina.receptor.numSeguridadSocial
+    FechaInicioRelLaboral=nomina.receptor.fechaInicioRelLaboral
+    Antigüedad=nomina.receptor.antigüedad
+    Sindicalizado=nomina.receptor.sindicalizado
+    TipoJornada=nomina.receptor.tipoJornada
+    Departamento=nomina.receptor.departamento
+    Puesto=nomina.receptor.puesto
+    RiesgoPuesto=nomina.receptor.riesgoPuesto
+    Banco=nomina.receptor.banco
+    CuentaBancaria=nomina.receptor.cuentaBancaria
+    SalarioBaseCotApor=nomina.receptor.salarioBaseCotApor
+    SalarioDiarioIntegrado=nomina.receptor.salarioDiarioIntegrado
+)
+    if nomina.receptor.subContrataciones
+        //- Los atributos son requeridos
+        each subContratacion in nomina.receptor.subContrataciones
+            nomina12:SubContratacion(
+                RfcLabora=subContratacion.rfcLabora
+                PorcentajeTiempo=subContratacion.porcentajeTiempo
+            )

@@ -1,0 +1,36 @@
+if !comercioExterior && complementos && complementos.comercioExterior
+    - comercioExterior = complementos.comercioExterior;
+
+if comercioExterior
+
+    if !comercioExterior.deducciones || (comercioExterior.deducciones && !comercioExterior.deducciones.arrayDeducciones)
+        - comercioExterior.totalDeducciones = null;
+
+    //-
+        Requeridos: Version, TipoOperacion
+        Opcionales: MotivoTraslado,ClaveDePedimento, CertificadoOrigen, NumCertificadoOrigen, NumeroExportadorConfiable, Incoterm, Subdivision, Observaciones, TipoCambioUSD, TotalUSD
+    cce11:ComercioExterior(
+        Version=1.2
+        MotivoTraslado=comercioExterior.motivoTraslado
+        TipoOperacion=comercioExterior.tipoOperacion
+        ClaveDePedimento=comercioExterior.claveDePedimento
+        CertificadoOrigen=comercioExterior.certificadoOrigen
+        NumCertificadoOrigen=comercioExterior.numCertificadoOrigen
+        NumeroExportadorConfiable=comercioExterior.numeroExportadorConfiable
+        Incoterm=comercioExterior.incoterm
+        Subdivision=comercioExterior.subdivision
+        Observaciones=comercioExterior.observaciones
+        TipoCambioUSD=comercioExterior.tipoCambioUSD
+        TotalUSD=comercioExterior.totalUSD
+    )
+
+        //- Including comercio emisor
+        include emisor
+        //- Including comercio propietario
+        include propietario
+        //- Including comercio receptor
+        include receptor
+        //- Including comercio destinatario
+        include destinatario
+        //- Including comercio mercancias
+        include mercancias

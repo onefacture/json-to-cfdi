@@ -1,0 +1,19 @@
+pago10:Pago(
+    FechaPago=pago.fechaPago
+    FormaDePagoP=pago.formaDePagoP
+    MonedaP=pago.monedaP
+    TipoCambioP=pago.tipoCambioP
+    Monto=pago.monto
+    NumOperacion=pago.numOperacion
+    RfcEmisorCtaOrd=pago.rfcEmisorCtaOrd
+    NomBancoOrdExt=pago.nomBancoOrdExt
+    CtaOrdenante=pago.ctaOrdenante
+    RfcEmisorCtaBen=pago.rfcEmisorCtaBen
+    CtaBeneficiario=pago.ctaBeneficiario
+    TipoCadPago=pago.tipoCadPago
+    CertPago=pago.certPago
+    CadPago=pago.cadPago
+    SelloPago=pago.selloPago
+)
+    each docRelacionado in pago.docsRelacionados
+        include docRelacionado

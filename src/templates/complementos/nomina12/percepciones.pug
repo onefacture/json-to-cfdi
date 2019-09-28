@@ -1,0 +1,71 @@
+//-  Nodo condicional para expresar las percepciones aplicables.
+    - Requeridos: totalGravado y totalExento
+    - Opcionales: totalSueldos, totalSeparacionIndemnizacion y totalJubilacionPensionRetiro
+nomina12:Percepciones(
+    TotalGravado=nomina.percepciones.totalGravado
+    TotalExento=nomina.percepciones.totalExento
+
+    TotalSueldos=nomina.percepciones.totalSueldos
+    TotalSeparacionIndemnizacion=nomina.percepciones.totalSeparacionIndemnizacion
+    TotalJubilacionPensionRetiro=nomina.percepciones.totalJubilacionPensionRetiro
+)
+    each percepcion in nomina.percepciones.arrayPercepciones
+        //- Nodo requerido para expresar la información detallada de una percepción
+
+            - Todos los atributos son requeridos
+        nomina12:Percepcion(
+            TipoPercepcion=percepcion.tipoPercepcion
+            Clave=percepcion.clave
+            Concepto=percepcion.concepto
+            ImporteGravado=percepcion.importeGravado
+            ImporteExento=percepcion.importeExento
+        )
+            if percepcion.accionesOTitulos
+                //- Nodo condicional para expresar ingresos por acciones o títulos valor que representan bienes. Se vuelve requerido cuando existan ingresos por sueldos derivados de adquisición de acciones o títulos (Art. 94, fracción VII LISR).
+
+                    - Todos los atributos son requeridos
+                each accionesOTitulos in percepcion.accionesOTitulos
+                    nomina12:AccionesOTitulos(
+                        ValorMercado=accionesOTitulos.valorMercado
+                        PrecioAlOtorgarse=accionesOTitulos.precioAlOtorgarse
+                    )
+            if percepcion.horasExtra
+                //- Nodo condicional para expresar las horas extra aplicables.
+
+                    - Todos los atributos son requeridos
+                each horasExtra in percepcion.horasExtra
+                    nomina12:HorasExtra(
+                        Dias=horasExtra.dias
+                        TipoHoras=horasExtra.tipoHoras
+                        HorasExtra=horasExtra.horasExtra
+                        ImportePagado=horasExtra.importePagado
+                    )
+
+    if nomina.percepciones.arrayJubilacionPensionRetiro
+        //- Nodo condicional para expresar la información detallada de pagos por jubilación, pensiones o haberes de retiro.
+
+            - Requeridos: ingresoAcumulable y ingresoNoAcumulable
+            - Opcionales: totalUnaExhibicion, totalParcialidad y montoDiario
+        each jubilacionPensionRetiro in nomina.percepciones.arrayJubilacionPensionRetiro
+            nomina12:JubilacionPensionRetiro(
+                IngresoAcumulable=jubilacionPensionRetiro.ingresoAcumulable
+                IngresoNoAcumulable=jubilacionPensionRetiro.ingresoNoAcumulable
+
+                TotalUnaExhibicion=jubilacionPensionRetiro.totalUnaExhibicion
+                TotalParcialidad=jubilacionPensionRetiro.totalParcialidad
+                MontoDiario=jubilacionPensionRetiro.montoDiario
+            )
+
+    if nomina.percepciones.arraySeparacionIndemnizacion
+        //- Nodo condicional para expresar la información detallada de otros pagos por separación.
+
+            - Requeridos: TODOS
+        each separacionIndemnizacion in nomina.percepciones.arraySeparacionIndemnizacion
+            nomina12:SeparacionIndemnizacion(
+                TotalPagado=separacionIndemnizacion.totalPagado
+                NumAñosServicio=separacionIndemnizacion.numAñosServicio
+                UltimoSueldoMensOrd=separacionIndemnizacion.ultimoSueldoMensOrd
+                IngresoAcumulable=separacionIndemnizacion.ingresoAcumulable
+                IngresoNoAcumulable=separacionIndemnizacion.ingresoNoAcumulable
+            )
+

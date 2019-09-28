@@ -1,0 +1,34 @@
+if !nomina && complementos && complementos.nomina
+    - nomina = complementos.nomina;
+
+if nomina
+
+    if !nomina.deducciones || (nomina.deducciones && !nomina.deducciones.arrayDeducciones)
+        - nomina.totalDeducciones = null;
+
+    //-
+        Requeridos: tipoNomina, fechaPago, fechaInicialPago, fechaFinalPago y numDiasPagados
+        Opcionales: totalPercepciones, totalDeducciones y totalOtrosPagos
+    nomina12:Nomina(
+        Version=1.2
+        TipoNomina=nomina.tipoNomina
+        FechaPago=nomina.fechaPago
+        FechaInicialPago=nomina.fechaInicialPago
+        FechaFinalPago=nomina.fechaFinalPago
+        NumDiasPagados=nomina.numDiasPagados
+        TotalPercepciones=nomina.totalPercepciones
+        TotalDeducciones=nomina.totalDeducciones
+        TotalOtrosPagos=nomina.totalOtrosPagos
+    )
+        //- Including nomina emisor
+        include emisor
+        //- Including nomina receptor
+        include receptor
+        //- Including nomina percepciones
+        include percepciones
+        //- Including nomina deducciones
+        include deducciones
+        //- Including nomina otros-pagos
+        include otros-pagos
+        //- Including nomina incapacidades
+        include incapacidades

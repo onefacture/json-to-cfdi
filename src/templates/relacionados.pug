@@ -1,0 +1,10 @@
+//- Todos los campos especificados son requeridos
+if relacionados
+	cfdi:CfdiRelacionados(
+		TipoRelacion=relacionados.tipoRelacion
+	)
+		//- El arreglo de uuids debe ser de strings
+		each uuid in relacionados.uuids
+			cfdi:CfdiRelacionado(
+				UUID=uuid
+			)

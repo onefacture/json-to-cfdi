@@ -1,0 +1,48 @@
+doctype xml
+//- Adding mixins
+include mixins/impuestos
+//-
+    Atributos requeridos: fecha, sello, noCertificado, certificado, subTotal, total, moneda, tipoDeComprobante y lugarExpedicion
+    Atributos opcionales: serie, folio, formaPago, condicionesDePago, descuento, tipoCambio, metodoPago y confirmacion
+cfdi:Comprobante(
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:cfdi="http://www.sat.gob.mx/cfd/3"
+    xsi:schemaLocation="http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd"
+    xmlns:nomina12="http://www.sat.gob.mx/nomina12"
+    xmlns:pago10="http://www.sat.gob.mx/Pagos"
+    xmlns:cce11="http://www.sat.gob.mx/ComercioExterior11"
+    Version=3.3
+    Serie=serie
+    Folio=folio
+    Fecha=fecha
+    Sello=sello
+    Certificado=certificado
+    NoCertificado=noCertificado
+    FormaPago=formaPago
+    CondicionesDePago=condicionesDePago
+    SubTotal=subTotal
+    Descuento=descuento
+    Moneda=moneda
+    TipoCambio=tipoCambio
+    Total=total
+    TipoDeComprobante=tipoDeComprobante
+    MetodoPago=metodoPago
+    LugarExpedicion=lugarExpedicion
+    Confirmacion=confirmacion
+)
+    //- Including relacionados
+    include relacionados
+    //- Including emisor
+    include emisor
+    //- Including receptor
+    include receptor
+    //- Including concepts
+    include conceptos
+    //- Including taxes
+    +addTaxes(impuestos)
+    //- Including complements
+    cfdi:Complemento
+        //- Including nomina12
+        include complementos/nomina12/index
+        include complementos/pago10/index
+        include complementos/comercio11/index

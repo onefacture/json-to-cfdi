@@ -1,0 +1,24 @@
+if comercioExterior.mercancias
+    cce11:Mercancias
+        each mercancia in comercioExterior.mercancias
+            //-
+                Requeridos: NoIdentificacion, ValorDolares
+                Opcionales: FraccionArancelaria, CantidadAduana, UnidadAduana, ValorUnitarioAduana
+            cce11:Mercancia(
+                NoIdentificacion=mercancia.noIdentificacion
+                FraccionArancelaria=mercancia.fraccionArancelaria
+                CantidadAduana=mercancia.cantidadAduana
+                UnidadAduana=mercancia.unidadAduana
+                ValorUnitarioAduana=mercancia.valorUnitarioAduana
+                ValorDolares=mercancia.valorDolares
+            )
+                if mercancia.descripcionesEspecificas
+                    //-
+                        Requeridos: Marca
+                        Opcionales: Modelo, SubModelo, NumeroSerie
+                    cce11:DescripcionesEspecificas(
+                        Marca=descripcionesEspecificas.Marca
+                        Modelo=mercancia.descripcionesEspecificas.Modelo
+                        SubModelo=mercancia.descripcionesEspecificas.SubModelo
+                        NumeroSerie=mercancia.descripcionesEspecificas.NumeroSerie
+                    )
