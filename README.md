@@ -1,6 +1,6 @@
 # JSON to CFDI
 
-Este módulo genera un CFDI a partir de una estructura JSON pero no valida si la estructura es correcta o si introduciste correctamente los códigos de algún catálogo del SAT. Se recomienda hacer muchas pruebas antes de utilizar en producción.
+Este módulo genera un CFDI a partir de una estructura JSON pero no valida si la estructura es correcta o si introdujiste correctamente los códigos de algún catálogo del SAT. Se recomienda hacer muchas pruebas antes de utilizar en producción.
 
 Soporta los siguientes complementos.
 
