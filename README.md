@@ -19,7 +19,7 @@ npm i --save json-to-cfdi
 
 ```Javascript
 const JsonToCfdi = require('json-to-cfdi');
-var jsonCfdi = null;
+var result = null;
 
 result = JsonToCfdi.parse({
 	jsonXML: { }
