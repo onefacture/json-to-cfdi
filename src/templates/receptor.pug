@@ -1,11 +1,12 @@
-//-
-	Requeridos: rfc y usoCFDI
-	Opcionales: nombre, residenciaFiscal y numRegIdTrib
-cfdi:Receptor(
-	Rfc=receptor.rfc
-	UsoCFDI=receptor.usoCFDI
+if receptor
+    //-
+        Requeridos: rfc y usoCFDI
+        Opcionales: nombre, residenciaFiscal y numRegIdTrib
+    cfdi:Receptor(
+        Rfc=receptor.rfc
+        UsoCFDI=receptor.usoCFDI
 
-	Nombre=receptor.nombre
-	ResidenciaFiscal=receptor.residenciaFiscal
-	NumRegIdTrib=receptor.numRegIdTrib
-)
+        Nombre=receptor.nombre
+        ResidenciaFiscal=receptor.residenciaFiscal
+        NumRegIdTrib=receptor.numRegIdTrib
+    )

@@ -1,21 +1,22 @@
-cfdi:Conceptos
-    each concepto in conceptos
-        //-
-            Requeridos: claveProdServ, cantidad, claveUnidad, descripcion, valorUnitario y importe
-            Opcionales: noIdentificacion, unidad y descuento
-        cfdi:Concepto(
-            NoIdentificacion=concepto.noIdentificacion
-            Unidad=concepto.unidad
-            Descuento=concepto.descuento
-
-            ClaveProdServ=concepto.claveProdServ
-            Cantidad=concepto.cantidad
-            ClaveUnidad=concepto.claveUnidad
-            Descripcion=concepto.descripcion
-            ValorUnitario=concepto.valorUnitario
-            Importe=concepto.importe
-        )
+if conceptos
+    cfdi:Conceptos
+        each concepto in conceptos
             //-
-                Aquí se invoca al mixin addTaxes para agregar los impuestos por concepto (en caso de existir).
-                Para mayor detalle ver la definición del mixin.
-            +addTaxes(concepto.impuestos)
+                Requeridos: claveProdServ, cantidad, claveUnidad, descripcion, valorUnitario y importe
+                Opcionales: noIdentificacion, unidad y descuento
+            cfdi:Concepto(
+                NoIdentificacion=concepto.noIdentificacion
+                Unidad=concepto.unidad
+                Descuento=concepto.descuento
+
+                ClaveProdServ=concepto.claveProdServ
+                Cantidad=concepto.cantidad
+                ClaveUnidad=concepto.claveUnidad
+                Descripcion=concepto.descripcion
+                ValorUnitario=concepto.valorUnitario
+                Importe=concepto.importe
+            )
+                //-
+                    Aquí se invoca al mixin addTaxes para agregar los impuestos por concepto (en caso de existir).
+                    Para mayor detalle ver la definición del mixin.
+                +addTaxes(concepto.impuestos)
